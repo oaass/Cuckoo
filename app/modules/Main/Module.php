@@ -61,7 +61,10 @@ class Module extends ModuleBase
         ]);
         $security->addPrivateResources('index', [
             'private'
-        ], ['Users']);
+        ], 'Users');
+        $security->addPrivateResources('index', [
+            'admin'
+        ], 'Administrators');
 
         // Register the ACL dispatcher
         parent::registerAclDispatcher($di, $security);

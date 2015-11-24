@@ -17,3 +17,9 @@ $router->add('/private', [
     'controller' => 'index',
     'action' => 'private'
 ]);
+
+$router->add('/admin', [
+    'module' => 'main', 
+    'controller' => 'index',
+    'action' => 'admin'
+]);
