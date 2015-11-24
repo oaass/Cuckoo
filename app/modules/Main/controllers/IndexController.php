@@ -21,5 +21,23 @@ use Cuckoo\Library\Phalcon\Mvc\Controller;
 class IndexController extends Controller
 {
     public function indexAction()
-    {}
+    {
+        echo __METHOD__;
+        $this->view->disable();
+    }
+
+    public function aboutAction()
+    {
+        echo __METHOD__;
+    }
+
+    public function privateAction()
+    {
+        echo __METHOD__;
+    }
+
+    public function adminAction()
+    {
+        echo __METHOD__;
+    }
 }
