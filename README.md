@@ -20,6 +20,6 @@ _Some of the things that makes it different from Zeki's skeleton?_
 
 ## Future plans
 
-* Improve the ACL implementation, making it more dynamic
+* Create adapters for ACL roles generation. Currently it only supports roles set in config.php
 
 ... I add more to this document later
