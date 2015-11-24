@@ -66,9 +66,15 @@ class Security extends Plugin
      * @access public
      * @return void
      */
-    public function addPrivateResources($resource, array $actions, array $roles)
+    public function addPrivateResources($resource, array $actions, $roles)
     {
-        $this->privateResources[$resource] = $actions;
+        if (!is_array($roles)) {
+            $roles = array($roles);
+        }
+
+        array_walk($roles, function($role, $key) use ($resource, $actions) {
+            $this->privateResources[$role][$resource] = $actions;
+        });
     }
 
     /**
@@ -82,8 +88,12 @@ class Security extends Plugin
      */
     public function beforeDispatch(Event $event, Dispatcher $dispatcher)
     {
+        $role = 'Guests';
+
         $auth = $this->session->get('auth');
-        $role = (!$auth) ? 'Guests' : 'Users';
+        if ($auth) {
+            $role = $this->session->get('role');
+        }
 
         $controller = $dispatcher->getControllerName();
         $action = $dispatcher->getActionName();
@@ -108,11 +118,17 @@ class Security extends Plugin
      */
     public function getAcl()
     {
+        $this->persistent->destroy();
         if (!isset($this->persistent->acl)) {
             $adapter = new AclAdapter;
             $adapter->setDefaultAction(PhalconAcl::DENY);
 
-            $acl = new CuckooAcl($adapter, $this->publicResources, $this->privateResources);
+            $roles = $this->config->security->acl->roles->toArray();
+
+            $acl = new CuckooAcl($adapter,
+                                $this->publicResources,
+                                $this->privateResources,
+                                $roles);
 
             $this->persistent->acl = $acl->initialize()->getAcl();
         }

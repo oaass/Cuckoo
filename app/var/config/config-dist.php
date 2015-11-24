@@ -18,6 +18,14 @@ return new \Phalcon\Config([
     ],
     'security' => [
         'workFactor' => 10,
-        'hash' => \Phalcon\Security::CRYPT_BLOWFISH_X
+        'hash' => \Phalcon\Security::CRYPT_BLOWFISH_X,
+        'acl' => [
+            'roles' => [
+                'guests' => 'guests',
+                'users' => ['users', 'guests'],
+                'moderators' => ['moderators', 'users'],
+                'administrators' => ['administrators', 'moderators']
+            ]
+        ]
     ]
 ]);

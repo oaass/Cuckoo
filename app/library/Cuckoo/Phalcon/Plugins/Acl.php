@@ -48,6 +48,11 @@ class Acl
     public $roles;
 
     /**
+     * @var array $roleNames
+     */
+    public $roleNames;
+
+    /**
      * Object constructor
      *
      * @param \Phalcon\Acl\AdapterInterface $adapter
@@ -57,16 +62,20 @@ class Acl
      * @access public
      * @return void
      */
-    public function __construct(AdapterInterface $adapter, $public, $private)
+    public function __construct(AdapterInterface $adapter, $public, $private, array $roles)
     {
         $this->adapter = $adapter;
         $this->privateResources = $private;
         $this->publicResources = $public;
 
-        $this->roles = [
-            'users' => new Role('Users'),
-            'guests' => new Role('Guests')
-        ];
+        // Build roles array
+        array_walk($roles, function ($name, $key) {
+            $this->roles[] = $name;
+            $name = (is_array($name)) ? $name[0] : $name;          
+            $this->rolesInstances[$name] = new Role(ucfirst($name));
+        });
+
+
     }
 
     /**
@@ -104,7 +113,19 @@ class Acl
      */
     public function registerRoles()
     {
-        array_map([$this->adapter, 'addRole'], $this->roles);
+        array_walk($this->roles, function ($role, $key) {
+            if (is_array($role)) {
+                $roles = [
+                    $this->rolesInstances[$role[0]], // Main role
+                    $this->rolesInstances[$role[1]] // Inherit from this role
+                ];
+            } else {
+                $roles = [
+                    $this->rolesInstances[$role]
+                ];
+            }
+            call_user_func_array([$this->adapter, 'addRole'], $roles);
+        });
     }
 
     /**
@@ -118,9 +139,21 @@ class Acl
      */
     public function registerResources(array $resources, $type = self::RESOURCE_PUBLIC)
     {
-        array_walk($resources, function ($actions, $resource) {
-            $this->adapter->addResource(new Resource($resource), $actions);
-        });
+        switch ($type) {
+            case self::RESOURCE_PRIVATE:
+                array_map(function($resources) {
+                    array_walk($resources, function ($actions, $resource) {
+                        $this->adapter->addResource(new Resource($resource), $actions);
+                    });                    
+                }, $resources);
+                break;
+            case self::RESOURCE_PUBLIC:
+            default:
+                array_walk($resources, function ($actions, $resource) {
+                    $this->adapter->addResource(new Resource($resource), $actions);
+                });
+                break;
+        }
     }
 
     /**
@@ -157,9 +190,14 @@ class Acl
      */
     public function grantAccessToPrivateResources()
     {
-        array_walk($this->privateResources, function ($actions, $resource) {
-            $this->grantAccessToResource($this->roles['users'], $resource, $actions);
-        });
+        array_map(function ($role) {
+            $roleName = $role->getName();
+            if (isset($this->privateResources[$roleName])) {    
+                array_walk($this->privateResources[$roleName], function ($actions, $resource) use ($role) {
+                    $this->grantAccessToResource($role, $resource, $actions);
+                });
+            }
+        }, $this->rolesInstances);
     }
 
     /**
@@ -174,7 +212,7 @@ class Acl
             array_walk($this->publicResources, function ($actions, $resource) use ($role) {
                 $this->grantAccessToResource($role, $resource, $actions);
             });
-        }, $this->roles);
+        }, $this->rolesInstances);
     }
 
     /**
