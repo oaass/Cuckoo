@@ -5,7 +5,8 @@ return new \Phalcon\Config([
         'name' => 'Project Name',
         'version' => '1.0',
         'isBeta' => true,
-        'layout' => 'default'
+        'layout' => 'default',
+        'baseUrl' => '/'
     ],
     'database' => [
         'adapter' => 'mysql',
