@@ -14,9 +14,9 @@ $di = new FactoryDefault();
 /**
  * Register url
  */
-$di->set('url', function () {
+$di->set('url', function () use ($config) {
     $url = new Url();
-    $url->setBaseUri('/lab/phalcon/hmvc/');
+    $url->setBaseUri($config->project->baseUrl);
     return $url;
 });
 
