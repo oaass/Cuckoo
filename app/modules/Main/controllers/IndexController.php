@@ -19,4 +19,7 @@ use Cuckoo\Library\Phalcon\Mvc\Controller;
  * @subpackage Modules\Main\Controllers
  */
 class IndexController extends Controller
-{}
+{
+    public function indexAction()
+    {}
+}
