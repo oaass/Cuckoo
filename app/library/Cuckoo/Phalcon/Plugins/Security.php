@@ -35,12 +35,12 @@ class Security extends Plugin
     /**
      * @var array $privateResources
      */
-    public $privateResources;
+    public $privateResources = [];
 
     /**
      * @var array $publicResources
      */
-    public $publicResources;
+    public $publicResources = [];
 
     /**
      * Add public resources
@@ -88,10 +88,9 @@ class Security extends Plugin
      */
     public function beforeDispatch(Event $event, Dispatcher $dispatcher)
     {
-        $role = 'Guests';
+        $role = $this->config->security->acl->defaultRole;
 
-        $auth = $this->session->get('auth');
-        if ($auth) {
+        if ($this->session->has('auth')) {
             $role = $this->session->get('role');
         }
 

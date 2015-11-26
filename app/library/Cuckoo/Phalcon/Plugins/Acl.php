@@ -35,12 +35,12 @@ class Acl
     /**
      * @var array $privateResources
      */
-    public $privateResources;
+    public $privateResources = [];
 
     /**
      * @var array $publicResources
      */
-    public $publicResources;
+    public $publicResources = [];
 
     /**
      * @var array $roles
@@ -62,7 +62,7 @@ class Acl
      * @access public
      * @return void
      */
-    public function __construct(AdapterInterface $adapter, $public, $private, array $roles)
+    public function __construct(AdapterInterface $adapter, array $public, array $private, array $roles)
     {
         $this->adapter = $adapter;
         $this->privateResources = $private;
