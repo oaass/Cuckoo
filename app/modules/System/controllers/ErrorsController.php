@@ -18,26 +18,24 @@ use Cuckoo\Library\Phalcon\Mvc\Controller;
  * @package Cuckoo
  * @subpackage Modules\System\Controllers
  */
-class ErrorController extends Controller
+class ErrorsController extends Controller
 {
     /**
-     * Display error pages
-     *
-     * @param integer $code
+     * Display 404 page
      *
      * @access public
      * @return void
      */
-    public function errorAction($code)
+    public function errorAction()
     {
-        $code = $this->filter->sanitize($code, 'absint');
-        
-        $viewFile = "error/{$code}";
+        $code = $this->dispatcher->getParam('code');
+
+        $viewFile = "errors/{$code}";
 
         if ($this->view->exists($viewFile)) {
-            $this->view->pick("error/{$code}");
+            return $this->view->pick($viewFile);
         } else {
-            $this->response->redirect('error/404');
+            return $this->view->pick('errors/404');
         }
     }
 }
