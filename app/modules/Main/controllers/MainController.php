@@ -18,12 +18,12 @@ use Cuckoo\Library\Phalcon\Mvc\Controller;
  * @package Cuckoo
  * @subpackage Modules\Main\Controllers
  */
-class IndexController extends Controller
+class MainController extends Controller
 {
     public function indexAction()
     {
         echo __METHOD__;
-        $this->view->disable();
+        
     }
 
     public function aboutAction()

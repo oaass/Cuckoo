@@ -2,24 +2,24 @@
 
 $router->add('/', [
     'module' => 'main',
-    'controller' => 'index',
+    'controller' => 'main',
     'action' => 'index'
 ]);
 
 $router->add('/about', [
     'module' => 'main',
-    'controller' => 'index',
+    'controller' => 'main',
     'action' => 'about'
 ]);
 
 $router->add('/private', [
     'module' => 'main',
-    'controller' => 'index',
+    'controller' => 'main',
     'action' => 'private'
 ]);
 
 $router->add('/admin', [
     'module' => 'main', 
-    'controller' => 'index',
+    'controller' => 'main',
     'action' => 'admin'
 ]);

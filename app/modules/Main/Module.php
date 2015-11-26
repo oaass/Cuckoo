@@ -56,13 +56,13 @@ class Module extends ModuleBase
         parent::registerServices($di);
 
         $security = new Security($di);
-        $security->addPublicResources('index', [
+        $security->addPublicResources('main', [
             'index', 'about'
         ]);
-        $security->addPrivateResources('index', [
+        $security->addPrivateResources('main', [
             'private'
         ], 'Users');
-        $security->addPrivateResources('index', [
+        $security->addPrivateResources('main', [
             'admin'
         ], 'Administrators');
 
