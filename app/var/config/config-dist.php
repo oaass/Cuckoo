@@ -27,7 +27,8 @@ return new \Phalcon\Config([
                 'moderators' => ['moderators', 'users'],
                 'administrators' => ['administrators', 'moderators']
             ],
-            'defaultRole' => 'Guests'
+            'defaultRole' => 'Guests',
+            'redirectTo' => ''
         ]
     ]
 ]);

@@ -61,7 +61,7 @@ class Security extends Plugin
      *
      * @param string $resource
      * @param array $actions
-     * @param array $roles
+     * @param array|string $roles
      *
      * @access public
      * @return void
@@ -102,9 +102,9 @@ class Security extends Plugin
         $allowed = $acl->isAllowed($role, $controller, $action);
 
         if ($allowed != PhalconAcl::ALLOW) {
-            $this->flash->error('You do not have access to this module');
             $this->response->setStatusCode(401, 'Not authorized');
-            $this->response->redirect('error/401');
+            $redirect = trim($this->config->security->acl->redirectTo, '/');
+            $this->response->redirect("/{$redirect}");
             return false;
         }
     }
