@@ -25,7 +25,8 @@ return new \Phalcon\Config([
                 'users' => ['users', 'guests'],
                 'moderators' => ['moderators', 'users'],
                 'administrators' => ['administrators', 'moderators']
-            ]
+            ],
+            'defaultRole' => 'Guests'
         ]
     ]
 ]);
