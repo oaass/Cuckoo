@@ -93,7 +93,6 @@ class Module
      */
     public function registerServices(\Phalcon\DI\FactoryDefault $di)
     {
-        $this->registerDispatcher($di);
         $this->registerViewService($di);
     }
 
@@ -121,23 +120,6 @@ class Module
             ]);
 
             return $view;
-        });
-    }
-
-    /**
-     * Register dispatcher
-     *
-     * @param \Phalcon\DI\FactoryDefault $di
-     *
-     * @access public
-     * @return \Phalcon\Mvc\Dispatcher
-     */
-    public function registerDispatcher(\Phalcon\DI\FactoryDefault $di)
-    {
-        $di->set('dispatcher', function () use ($di) {
-            $dispatcher = new Dispatcher();
-            $dispatcher->setDefaultNamespace($this->defaultNamespace);
-            return $dispatcher;
         });
     }
 

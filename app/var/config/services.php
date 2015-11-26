@@ -5,6 +5,9 @@ use Phalcon\Flash\Session as FlashSession;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Session\Adapter\Files as SessionFiles;
 use Phalcon\Security;
+use Phalcon\Dispatcher;
+use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+use Phalcon\Events\Event as EventsManager;
 
 /**
  * Initialize dependency injector
@@ -54,6 +57,31 @@ $di->setShared('security', function () use ($config) {
 $di->setShared('filter', function () {
     $filter = new \Phalcon\Filter;
     return $filter;
+});
+
+$di->setShared('dispatcher', function () use ($di) {
+
+    $eventsManager = $di->getShared('eventsManager');
+    $eventsManager->attach("dispatch:beforeException", function ($event, $dispatcher, $exception) {
+        switch ($exception->getCode()) {
+            case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
+            case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
+                $dispatcher->forward([
+                    'namespace' => 'Cuckoo\Modules\System\Controllers',
+                    'module' => 'system',
+                    'controller' => 'errors',
+                    'action'     => 'error',
+                    'params' => ['code' => '404']
+                ]);
+                return false;
+        }
+    });
+
+    $dispatcher = new MvcDispatcher();
+    $dispatcher->setEventsManager($eventsManager);
+
+    return $dispatcher;
+
 });
 
 return $di;
