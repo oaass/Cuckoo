@@ -109,7 +109,7 @@ class Module
     {
         $di->setShared('view', function () use ($di) {
             $layout = $di->get('config')->project->layout;
-            $this->layoutsPath = sprintf('../../../../../%s/layouts/%s/', 'public', $layout);
+            $this->layoutsPath = sprintf('../../../../%s/layouts/%s/', 'public', $layout);
 
             $view = new View();
             $view->setViewsDir($this->path . $this->viewsPath);
