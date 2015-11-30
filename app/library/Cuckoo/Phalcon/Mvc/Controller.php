@@ -22,4 +22,19 @@ class Controller extends PhalconController
 {
     public function initialize()
     {}
+
+    public function showErrorPage($code)
+    {
+        $this->view->setViewsDir(APP_PATH . '/modules/System/views');
+
+        $this->view->setVar('t', $translation);
+
+        $viewFile = "errors/{$code}";
+
+        if ($this->view->exists($viewFile)) {
+            $this->view->pick([$viewFile]);
+        } else {
+            $this->view->pick(['errors/404']);
+        }
+    }
 }
