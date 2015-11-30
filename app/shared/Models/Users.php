@@ -7,6 +7,11 @@
 namespace Cuckoo\Shared\Models;
 
 /**
+ * @uses Cuckoo\Library\Phalcon\Mvc\Model
+ */
+use Cuckoo\Library\Phalcon\Mvc\Model as ModelBase;
+
+/**
  * User model
  *
  * @author Ole Aass <ole@oleaass.com>
