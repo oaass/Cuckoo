@@ -9,6 +9,7 @@ $loader->registerNamespaces([
     'Cuckoo\Modules\Custom' => APP_PATH . '/modules/Custom',
     'Cuckoo\Library' => APP_PATH . '/library/Cuckoo',
     'Cuckoo\Widgets' => APP_PATH . '/widgets',
+    'Cuckoo\Shared' => APP_PATH . '/shared'
 ]);
 
 $loader->register();
