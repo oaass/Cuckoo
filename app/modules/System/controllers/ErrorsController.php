@@ -1,21 +1,21 @@
 <?php
 
 /**
- * @package Cuckoo
+ * @package App
  * @subpackage Modules\System\Controllers
  */
-namespace Cuckoo\Modules\System\Controllers;
+namespace App\Modules\System\Controllers;
 
 /**
- * @uses Cuckoo\Library\Phalcon\Mvc\Controller
+ * @uses Cuckoo\Phalcon\Mvc\Controller
  */
-use Cuckoo\Library\Phalcon\Mvc\Controller;
+use Cuckoo\Phalcon\Mvc\Controller;
 
 /**
  * System module's error controller
  *
  * @author Ole Aass <ole@oleaass.com>
- * @package Cuckoo
+ * @package App
  * @subpackage Modules\System\Controllers
  */
 class ErrorsController extends Controller

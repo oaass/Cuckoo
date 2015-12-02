@@ -2,15 +2,15 @@
 
 /**
  * @package Cuckoo
- * @subpackage Library\Phalcon\Plugins
+ * @subpackage Phalcon\Plugins
  */
-namespace Cuckoo\Library\Phalcon\Plugins;
+namespace Cuckoo\Phalcon\Plugins;
 
 /**
  * @uses Phalcon\Acl\AdapterInterface
  * @uses Phalcon\Acl\Adapter\Memory
  * @uses Phalcon\Acl
- * @uses Cuckoo\Library\Phalcon\Plugins\Acl
+ * @uses Cuckoo\Phalcon\Plugins\Acl
  * @uses Phalcon\Mvc\User\Plugin
  * @uses Phalcon\Mvc\Dispatcher
  * @uses Phalcon\Events\Event
@@ -18,7 +18,7 @@ namespace Cuckoo\Library\Phalcon\Plugins;
 use Phalcon\Acl\AdapterInterface;
 use Phalcon\Acl\Adapter\Memory as AclAdapter;
 use Phalcon\Acl as PhalconAcl;
-use Cuckoo\Library\Phalcon\Plugins\Acl as CuckooAcl;
+use Cuckoo\Phalcon\Plugins\Acl as CuckooAcl;
 use Phalcon\Mvc\User\Plugin;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Events\Event;
@@ -28,7 +28,7 @@ use Phalcon\Events\Event;
  *
  * @author Ole Aass <ole@oleaass.com>
  * @package Cuckoo
- * @subpackage Library\Phalcon\Plugins 
+ * @subpackage Phalcon\Plugins 
  */
 class Security extends Plugin
 {
@@ -113,7 +113,7 @@ class Security extends Plugin
      * Get ACL instance
      *
      * @access public
-     * @return \Cuckoo\Library\Phalcon\Plugins\Acl
+     * @return \Cuckoo\Phalcon\Plugins\Acl
      */
     public function getAcl()
     {

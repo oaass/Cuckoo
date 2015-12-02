@@ -2,29 +2,31 @@
 
 /**
  * @package Cuckoo
- * @subpackage Library\Phalcon\Mvc
+ * @subpackage Phalcon\Mvc
  */
-namespace Cuckoo\Library\Phalcon\Mvc;
+namespace Cuckoo\Phalcon\Mvc;
 
 /**
  * @uses Phalcon\DI\FactoryDefault
  * @uses Phalcon\DI
  * @uses Phalcon\Loader
  * @uses Phalcon\Mvc\Dispatcher
- * @uses Cuckoo\Library\Phalcon\Mvc\View
+ * @uses Cuckoo\Phalcon\Mvc\View
+ * @uses Cuckoo\Phalcon\Plugins\Security
  */
 use Phalcon\DI\FactoryDefault;
 use Phalcon\DI;
 use Phalcon\Loader;
 use Phalcon\Mvc\Dispatcher;
-use Cuckoo\Library\Phalcon\Mvc\View;
+use Cuckoo\Phalcon\Mvc\View;
+use Cuckoo\Phalcon\Plugins\Security;
 
 /**
  * Module base
  *
  * @author Ole Aass <ole@oleaass.com>
  * @package Cuckoo
- * @subpackage Library\Phalcon\Mvc
+ * @subpackage Phalcon\Mvc
  */
 class Module
 {
@@ -102,7 +104,7 @@ class Module
      * @param \Phalcon\DI\FactoryDefault $di
      *
      * @access public
-     * @return \Cuckoo\Library\Phalcon\Mvc\View
+     * @return \Cuckoo\Phalcon\Mvc\View
      */
     public function registerViewService(\Phalcon\DI\FactoryDefault $di)
     {
@@ -131,7 +133,7 @@ class Module
      * @access public
      * @return \Phalcon\Mvc\Dispatcher
      */
-    public function registerAclDispatcher($di, \Cuckoo\Library\Phalcon\Plugins\Security $security)
+    public function registerAclDispatcher($di, Security $security)
     {
         $di->set('dispatcher', function () use ($di, $security) {
             $dispatcher = new Dispatcher;

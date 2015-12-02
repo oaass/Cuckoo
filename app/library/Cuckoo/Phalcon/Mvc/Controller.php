@@ -2,9 +2,9 @@
 
 /**
  * @package Cuckoo
- * @subpackage Library\Phalcon\Mvc
+ * @subpackage Phalcon\Mvc
  */
-namespace Cuckoo\Library\Phalcon\Mvc;
+namespace Cuckoo\Phalcon\Mvc;
 
 /**
  * @uses Phalcon\Mvc\Controller
@@ -16,7 +16,7 @@ use Phalcon\Mvc\Controller as PhalconController;
  *
  * @author Ole Aass <ole@oleaass.com>
  * @package Cuckoo
- * @subpackage Library\Phalcon\Mvc
+ * @subpackage Phalcon\Mvc
  */
 class Controller extends PhalconController
 {

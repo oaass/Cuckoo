@@ -67,7 +67,7 @@ $di->setShared('dispatcher', function () use ($di) {
             case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
             case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
                 $dispatcher->forward([
-                    'namespace' => 'Cuckoo\Modules\System\Controllers',
+                    'namespace' => 'App\Modules\System\Controllers',
                     'module' => 'system',
                     'controller' => 'errors',
                     'action'     => 'error',

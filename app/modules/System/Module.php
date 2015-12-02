@@ -1,21 +1,21 @@
 <?php
 
 /**
- * @package Cuckoo
+ * @package App
  * @subpackage Modules\System
  */
-namespace Cuckoo\Modules\System;
+namespace App\Modules\System;
 
 /**
- * @uses Cuckoo\Library\Phalcon\Mvc\Module
+ * @uses Cuckoo\Phalcon\Mvc\Module
  */
-use Cuckoo\Library\Phalcon\Mvc\Module as ModuleBase;
+use Cuckoo\Phalcon\Mvc\Module as ModuleBase;
 
 /**
  * Module bootstrap object
  *
  * @author Ole Aass <ole@oleaass.com>
- * @package Cuckoo
+ * @package App
  * @subpackage Modules\System
  */
 class Module extends ModuleBase
@@ -34,10 +34,10 @@ class Module extends ModuleBase
         parent::__construct();
         $this->path = __DIR__;
         $this->namespaces = [
-            'Cuckoo\Modules\System\Controllers' => $this->path . '/controllers',
-            'Cuckoo\Modules\System\Models' => $this->path . '/models'
+            'App\Modules\System\Controllers' => $this->path . '/controllers',
+            'App\Modules\System\Models' => $this->path . '/models'
         ];
-        $this->defaultNamespace = 'Cuckoo\Modules\System\Controllers';
+        $this->defaultNamespace = 'App\Modules\System\Controllers';
     }
 
 }

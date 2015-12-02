@@ -1,6 +1,6 @@
 <?php
 
-namespace Cuckoo\Library\Phalcon\Mvc;
+namespace Cuckoo\Phalcon\Mvc;
 
 use Phalcon\Mvc\Model as PhalconModel;
 

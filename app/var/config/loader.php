@@ -5,11 +5,10 @@ use Phalcon\Loader;
 $loader = new Loader();
 
 $loader->registerNamespaces([
-    'Cuckoo\Modules\Core' => APP_PATH . '/modules/Core',
-    'Cuckoo\Modules\Custom' => APP_PATH . '/modules/Custom',
-    'Cuckoo\Library' => APP_PATH . '/library/Cuckoo',
-    'Cuckoo\Widgets' => APP_PATH . '/widgets',
-    'Cuckoo\Shared' => APP_PATH . '/shared'
+    'Cuckoo' => APP_PATH . '/library/Cuckoo',
+    'App\Modules' => APP_PATH . '/modules',
+    'App\Widgets' => APP_PATH . '/widgets',
+    'App\Shared' => APP_PATH . '/shared'
 ]);
 
 $loader->register();

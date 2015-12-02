@@ -2,9 +2,9 @@
 
 /**
  * @package Cuckoo
- * @subpackage Library\Phalcon\Plugins
+ * @subpackage Phalcon\Plugins
  */
-namespace Cuckoo\Library\Phalcon\Plugins;
+namespace Cuckoo\Phalcon\Plugins;
 
 /**
  * @uses Phalcon\Acl\Role
@@ -20,7 +20,7 @@ use Phalcon\Acl\AdapterInterface;
  * 
  * @author Ole Aass <ole@oleaass.com>
  * @package Cuckoo
- * @subpackage Library\Phalcon\Plugins
+ * @subpackage Phalcon\Plugins
  */
 class Acl
 {
@@ -93,7 +93,7 @@ class Acl
      * Initialize object
      *
      * @access public
-     * @return \Cuckoo\Library\Phalcon\Plugins\Acl
+     * @return \Cuckoo\Phalcon\Plugins\Acl
      */
     public function initialize()
     {

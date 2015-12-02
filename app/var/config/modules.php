@@ -16,7 +16,7 @@ foreach ($iterator as $file) {
         $namespace = str_replace('/', '\\', $module);
         $key = strtolower(explode('/', $module)[0]);
         $modules[$key] = [
-            'className' => "Cuckoo\Modules\\{$namespace}\\Module",
+            'className' => "App\Modules\\{$namespace}\\Module",
             'path' => "{$path}/Module.php"
         ];
     }

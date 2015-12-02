@@ -1,21 +1,21 @@
 <?php
 
 /**
- * @package Cuckoo
+ * @package App
  * @subpackage Modules\Main\Controllers
  */
-namespace Cuckoo\Modules\Main\Controllers;
+namespace App\Modules\Main\Controllers;
 
 /**
- * @uses Cuckoo\Library\Phalcon\Mvc\Controller
+ * @uses Cuckoo\Phalcon\Mvc\Controller
  */
-use Cuckoo\Library\Phalcon\Mvc\Controller;
+use Cuckoo\Phalcon\Mvc\Controller;
 
 /**
  * Main module index controller
  *
  * @author Ole Aass <ole@oleaass.com>
- * @package Cuckoo
+ * @package App
  * @subpackage Modules\Main\Controllers
  */
 class MainController extends Controller

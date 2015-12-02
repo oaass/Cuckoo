@@ -2,9 +2,9 @@
 
 /**
  * @package Cuckoo
- * @subpackage Library\Phalcon\Mvc
+ * @subpackage Phalcon\Mvc
  */
-namespace Cuckoo\Library\Phalcon\Mvc;
+namespace Cuckoo\Phalcon\Mvc;
 
 /**
  * @uses Phalcon\Mvc\View
@@ -16,7 +16,7 @@ use Phalcon\Mvc\View as PhalconView;
  *
  * @author Ole Aass <ole@oleaass.com>
  * @package Cuckoo
- * @subpackage Library\Phalcon\Mvc
+ * @subpackage Phalcon\Mvc
  */
 class View extends PhalconView
 {
